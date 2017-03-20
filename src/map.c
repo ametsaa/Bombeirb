@@ -193,9 +193,9 @@ void map_display(struct map* map)
 	    y = j * SIZE_BLOC;
 
 	    unsigned char type = map->grid[CELL(i,j)];
-	    
-	    
-	    
+
+
+
 	    switch (type & 0x0f) {
 		case CELL_SCENERY:
 		  display_scenery(map, x, y, type);
@@ -262,11 +262,12 @@ struct map* map_get_default(void)
 struct map* map_get(char N){
 	//We charge the map N
 	FILE* fichier = NULL;
-	char mapname[10]= "data/map_0";
+	char mapname[11]= "data/map_0";
 	mapname[9]=N;
+	mapname[10]='\0';
 	fichier = fopen(mapname, "r+");
 	int width = 0;
-	int height = 0;
+	int height = 0; 
 
 	//We get the width and the height from fichier
 	fscanf(fichier, "%d:%d" , &width , &height);
@@ -305,4 +306,3 @@ char next_level(struct map* map){
 
 	return -1;
 }
-
